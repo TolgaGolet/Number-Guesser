@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Number Guesser</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+	p {
+		text-align: center;
+	}
+
+	#title {
+		font-size: 45px;
+		font-weight: bold;
+		background-color: powderblue;
+	}
+
+	#guess {
+		background-color: red;
+		color: black;
+		font-size: 40px;
+		font-weight: bold;
+	}
+
+	#guessTitle {
+		font-weight: bold;
+		color: red;
+		font-size: 25px;
+	}
+
+	button {
+		border: 2px solid #555555;
+		border-radius: 8px;
+		color: black;
+		padding: 15px 32px;
+		text-align: center;
+		text-decoration: none;
+		display: inline-block;
+		font-size: 16px;
+		font-weight: bold;
+		margin: 4px 2px;
+		cursor: pointer;
+		transition-duration: 0.4s;
+		box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+	}
+
+	button:hover {
+		background-color: white;
+		color: black;
+	}
+
+	button:active {
+		transform: translateY(5px);
+	}
+
+	.bigger {
+		background-color: powderblue;
+	}
+
+	.smaller {
+		background-color: yellow;
+	}
+
+	.correct {
+		padding: 15px 49px;
+		margin-left: 20px;
+		background-color: #7FFF00;
+	}
+</style>
+
+<script>
+var guess=50, max=101, min=0;
+
+function biggerPressed() {
+	min=guess;
+	guess=parseInt((guess+max)/2);
+	document.getElementById("guess").innerHTML=guess;
+}
+
+function smallerPressed() {
+	max=guess;
+	guess=parseInt((min+guess)/2);
+	document.getElementById("guess").innerHTML=guess;
+}
+
+function correctPressed() {
+	guess=50;
+	max=101;
+	min=0;
+	document.getElementById("guessTitle").innerHTML="Reset! My guess is:";
+	document.getElementById("guess").innerHTML=guess;
+}
+</script>
+
+</head>
+<body>
+
+<div>
+	<button onclick="window.history.back();"><- Go Back</button>
+</div>
+
+<p id="title">Think of an integer between 0-100.</p>
+<p id="guessTitle">My guess is:</p> <p id="guess">50</p>
+<div style="text-align: center;">
+	<button class="bigger" type="button" onclick="biggerPressed()">Bigger</button>
+	<button class="smaller" type="button" onclick="smallerPressed()">Smaller</button>
+	<button class="correct" type="button" onclick="correctPressed()">Correct!</button>
+</div>
+
+</body>
+</html>
